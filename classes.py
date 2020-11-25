@@ -166,15 +166,16 @@ class MyClass:
         # Checks if someone is presenting by looking for the "presenting" image
         sharing = pyautogui.locateOnScreen("images/presenting.png", confidence=0.8)
         if sharing:
+            if not os.path.exists(f"screenshots/{current_class}"):os.mkdir(f"screenshots/{current_class}")
             # Searches the screenshots folder for all images starting with the same name as the current subject
-            screenshots = [screenshot for screenshot in os.listdir("screenshots") if screenshot.startswith(current_class) and screenshot.endswith(".png")]
+            screenshots = [screenshot for screenshot in os.listdir(f"screenshots/{current_class}") if screenshot.endswith(".png")]
             if screenshots:
                 # Calles the get_last Function. All images will be saved with a number at the end of the subject's name
                 highest = self.get_last(screenshots) + 1
             else:
                 # If no other screenshots with the same name as current subject exists, sets highest to 1 and names the new screenshot that.
                 highest = 1
-            pyautogui.screenshot(imageFilename=f"screenshots/{current_class}{highest}.png")
+            pyautogui.screenshot(imageFilename=f"screenshots/{current_class}/{current_class}{highest}.png")
             print("Screenshot taken")  
 
 dotw = ["Mon", "Tue", "Wed", "Thu", "Fri"]
