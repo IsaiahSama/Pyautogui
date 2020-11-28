@@ -53,9 +53,9 @@ class MyClass:
             is_class = self.navbar(current_class)
             
             if is_class:
-                time.sleep(5)
+                time.sleep(20)
                 print(f"Joined {current_class}")
-                self.send_msg(f"Period {period}: {current_class}")
+                self.send_msg(f"Good day")
                 time.sleep(2)
                 
             else:
@@ -84,17 +84,18 @@ class MyClass:
         return schedule.get(period)
 
     def navbar(self, subject):
-        coords = pyautogui.locateOnScreen("images/r_icon.png", confidence=0.8, grayscale=True)
+        coords = pyautogui.locateOnScreen("images/r_icon.png", confidence=0.7, grayscale=True)
         time.sleep(4)
         if not coords:
-            print("SOMETHING WENT WRONG")
-            raise SystemExit
+            time.sleep(20)
+            coords = pyautogui.locateOnScreen("images/r_icon.png", confidence=0.7, grayscale=True)
+            if not coords: return False
 
         left = coords.left + 100
         top = coords.top + 5
         pyautogui.click(left, top)
         try:
-            pyautogui.typewrite(f"{subjects[subject]}?authuser=0&hs=179")
+            pyautogui.typewrite(f"{subjects[subject]}")
             # pyautogui.typewrite("meet.google.com/kop-qotc-hsz")
             time.sleep(0.5)
             pyautogui.press("enter")
@@ -109,22 +110,24 @@ class MyClass:
             pyautogui.click(chat)
         time.sleep(3)
         text_area = pyautogui.locateOnScreen("images/msg.png", confidence=0.6, grayscale=True)
+        time.sleep(2)
         if text_area:
             pyautogui.click(text_area)
             time.sleep(2)
-            pyautogui.typewrite(msg)
-            time.sleep(1)
-            pyautogui.press("enter")
+        pyautogui.typewrite(msg)
+        time.sleep(1)
+        pyautogui.press("enter")
         # pass
 
 
     def attemptjoin(self):
+        time.sleep(15)
         for _ in range(100):
             try:
-                img = pyautogui.locateOnScreen("../reloadmeet/reload.png", confidence=0.8)
+                img = pyautogui.locateOnScreen("images/reload.png", confidence=0.7, grayscale=True)
                 if not img:
                     time.sleep(1)
-                    dismiss = pyautogui.locateOnScreen("images/dismiss.png", confidence=0.8)
+                    dismiss = pyautogui.locateOnScreen("images/dismiss.png", confidence=0.7)
                     if dismiss:
                         pyautogui.click(dismiss)
                         time.sleep(1)
@@ -141,7 +144,7 @@ class MyClass:
                         return False
                 else:
                     pyautogui.click(img)
-                time.sleep(3)
+                time.sleep(5)
             except KeyboardInterrupt:
                 return False
         return False
@@ -167,8 +170,8 @@ class MyClass:
         sharing = pyautogui.locateOnScreen("images/presenting.png", confidence=0.8)
         if sharing:
             if not os.path.exists(f"screenshots/{current_class}"):os.mkdir(f"screenshots/{current_class}")
-            # Searches the screenshots folder for all images starting with the same name as the current subject
-            screenshots = [screenshot for screenshot in os.listdir(f"screenshots/{current_class}") if screenshot.endswith(".png")]
+            # Searches the screenshots folder of the current class for all images
+            screenshots = [screenshot for screenshot in os.listdir(f"screenshots/{current_class}") if screenshot.endswith(".png") and screenshot.startswith(current_class)]
             if screenshots:
                 # Calles the get_last Function. All images will be saved with a number at the end of the subject's name
                 highest = self.get_last(screenshots) + 1
