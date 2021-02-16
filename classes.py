@@ -152,7 +152,12 @@ class MyClass:
 
     def get_time(self):
         cur_time = time.ctime().split(" ")[3].split(":")
-        minutes = (int(cur_time[0]) * 60) + int(cur_time[1])
+        try:
+            minutes = (int(cur_time[0]) * 60) + int(cur_time[1])
+        except IndexError:
+            cur_time = time.ctime().split(" ")[4].split(":")
+            minutes = (int(cur_time[0]) * 60) + int(cur_time[1])
+
         return minutes
 
     def get_last(self, itera):
