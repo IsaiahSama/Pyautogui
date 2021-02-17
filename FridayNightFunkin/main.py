@@ -3,13 +3,14 @@ import keyboard
 from time import sleep
 from threading import Thread
 
-# Left, down, up, right
-x_coords = [1011, 1143, 1285, 1423]
-letters = ["a", "s", "w", "d"]
+# WASD!!!
+x_coords = [1285, 1011, 1143, 1423]
+letters = ["w", "a", "s", "d"]
 
 y_coord = 300
 
 color = (135, 163, 173)
+
 
 class Setup:
 
@@ -44,36 +45,76 @@ class Main:
         print("Done and ready to play")
 
     def main(self):
-        for num, x_value in enumerate(x_coords):
-            thread = Thread(target=self.play, args=(x_value, letters[num]), daemon=True)
-            thread.start()       
+        thread_list = [Thread(target=self.handle_up, daemon=True), Thread(target=self.handle_left, daemon=True), Thread(target=self.handle_down, daemon=True), Thread(target=self.handle_right, daemon=True)]
 
-        input()        
+        for thread in thread_list:
+            thread.start()
 
-    def play(self, coord, letter):
-        print(f"For coordinate {coord} we got the letter {letter}")      
 
-        while True:
+    def handle_up(self):
+        green = (18, 249, 7)
+
+        print("Handling up arrow has begun.")
+        
+        while not keyboard.is_pressed("q"):
             
-            try:
-                x = pyautogui.pixel(coord, y_coord)
-                if x[0] != color[0] or x[1] != color[1] or x[2] != color[2]:
-                    keyboard.press(letter)
-                    sleep(0.005)
-                    keyboard.release(letter)
-                    print(f"{letter} was pressed")
-                    sleep(0.3)
+            while pyautogui.pixel(x_coords[0], y_coord)[1] > 245:
+                self.press("w")
+                print("Up arrow pressed")
+
+        print("Function has been terminated")
+
+
+    def handle_left(self):
+        purple = (195, 75, 154)
+
+        print("Handling left arrow has begun")
+
+        while not keyboard.is_pressed("q"):
+            x = pyautogui.pixel(x_coords[1], y_coord)
+
+            while x[0] > 160 and x[2] > 150:
+                self.press("a")
+                print("Left arrow pressed")
+
+        print("Function has been terminated")
+
+
+    def handle_down(self):
+        blue = (0, 204, 205)
+
+        print("Handling down arrow has begun")
+
+        while not keyboard.is_pressed("q"):
             
-            except WindowsError: continue
+            x = pyautogui.pixel(x_coords[2], y_coord)
 
-            if keyboard.is_pressed("q"):
-                sleep(0.5)
-                while not keyboard.is_pressed("z"):
-                    sleep(0.1)
+            while x[1] > 200 and x[2] > 200:
+                self.press("s")
+                print("Down arrow pressed")
 
-            if keyboard.is_pressed("f"): break
+        print("Function has been terminated")
 
-        print("Loop ended")
+
+    def handle_right(self):
+        red = (249, 57, 63)
+
+        print("Handling right arrow has begun")
+
+        while not keyboard.is_pressed("q"):
+            
+            while pyautogui.pixel(x_coords[3], y_coord)[0] > 245:
+                
+                self.press("d")
+                print("Right arrow pressed")
+
+        print("Function has been terminated")
+
+    def press(self, key):
+        
+        keyboard.press(key)
+        sleep(0.02)
+        keyboard.release(key)
 
 
 main = Main()
