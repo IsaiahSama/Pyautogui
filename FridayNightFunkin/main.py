@@ -149,7 +149,7 @@ class Main:
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.02)
+        sleep(0.08)
         keyboard.release(key)
 
 
