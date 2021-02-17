@@ -40,13 +40,13 @@ class Main:
 
     def __init__(self) -> None:
         setup = Setup()
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started", duration=2)
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started")
         setup.get_arrow("down", 1143)
         setup.get_arrow("left", 1011)
         setup.get_arrow("right", 1423)
         setup.get_arrow("up", 1285)
         print("Done and ready to play")
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Done and ready to play", duration=2)
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Done and ready to play")
 
 
     def main(self):
@@ -65,12 +65,13 @@ class Main:
         print("Handling up arrow has begun.")
         
         while not keyboard.is_pressed("q"):
-            thread = Thread(target=self.press, args=("w",))
+            # thread = Thread(target=self.press, args=("w",))
             try:
                 x = pyautogui.pixel(x_coords[0], y_coord)
 
                 if x[1] > 245:
-                    thread.start()
+                    # thread.start()
+                    self.press("w")
                     print("Up arrow pressed")
             
             except WindowsError:
@@ -88,13 +89,13 @@ class Main:
 
         while not keyboard.is_pressed("q"):
             
-            thread = Thread(target=self.press, args=("a",))
+            # thread = Thread(target=self.press, args=("a",))
 
             try:
                 x = pyautogui.pixel(x_coords[1], y_coord)
 
                 if x[0] > 160 and x[2] > 150:
-                    thread.start()
+                    self.press("a")
                     print("Left arrow pressed")
             
             except WindowsError:
@@ -109,13 +110,14 @@ class Main:
         print("Handling down arrow has begun")
 
         while not keyboard.is_pressed("q"):
-            thread = Thread(target=self.press, args=("s",))
+            # thread = Thread(target=self.press, args=("s",))
 
             try:
                 x = pyautogui.pixel(x_coords[2], y_coord)
                 
                 if x[1] > 200 and x[2] > 200:
-                    thread.start()
+                    self.press("s")
+
                     print("Down arrow pressed")
             
             except WindowsError:
@@ -130,7 +132,7 @@ class Main:
         print("Handling right arrow has begun")
 
         while not keyboard.is_pressed("q"):
-            thread = Thread(target=self.press, args=("d",))
+            #thread = Thread(target=self.press, args=("d",))
 
 
             try:
@@ -138,7 +140,7 @@ class Main:
             
                 if x[0] > 245:
                     
-                    thread.start()
+                    self.press("d")
                     print("Right arrow pressed")
             
             except WindowsError:
@@ -149,9 +151,10 @@ class Main:
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.07)
+        sleep(0.1)
         keyboard.release(key)
         sleep(0.03)
+
 
 
 main = Main()
