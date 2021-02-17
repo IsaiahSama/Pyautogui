@@ -40,7 +40,7 @@ class Main:
 
     def __init__(self) -> None:
         setup = Setup()
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started. Searching for arrows")
         setup.get_arrow("down", 1143)
         setup.get_arrow("left", 1011)
         setup.get_arrow("right", 1423)
@@ -57,6 +57,7 @@ class Main:
             thread.start()
 
         thread = Thread(target=self.reset_con, daemon=True)
+        thread.start()
         input()
 
 
@@ -82,8 +83,6 @@ class Main:
                         while x[1] > 245:
                             sleep(0.05)
                             x = pyautogui.pixel(x_coords[0], y_coord)
-
-                        keyboard.release("w")
             
             except WindowsError:
                 continue                
@@ -117,7 +116,6 @@ class Main:
                             sleep(0.05)
                             x = pyautogui.pixel(x_coords[1], y_coord)
 
-                        keyboard.release("a")                   
             
             except WindowsError:
                 continue
@@ -148,8 +146,6 @@ class Main:
                         while x[1] > 200 and x[2] > 200:
                             sleep(0.05)
                             x = pyautogui.pixel(x_coords[2], y_coord)
-
-                        keyboard.release("s")
             
             except WindowsError:
                 continue
