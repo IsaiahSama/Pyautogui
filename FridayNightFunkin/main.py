@@ -140,18 +140,16 @@ class Main:
     def press(self, key, x_coord):
         
         keyboard.press(key)
-        sleep(0.02)
+        sleep(0.03)
         try:
             x = pyautogui.pixel(x_coord, y_coord)
             
-            while x != color:
-                sleep(0.01)
-                x = pyautogui.pixel(x_coord, y_coord)
+            if x != color:
+                sleep(1)
         
         except WindowsError:
             pass
         keyboard.release(key)
-        sleep(0.05)
 
 
 main = Main()
