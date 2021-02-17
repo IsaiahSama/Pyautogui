@@ -83,7 +83,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[0], y_coord)
-                            if counter >= 5: break
+                            if counter >= 10: break
             
             except WindowsError:
                 continue                
@@ -118,7 +118,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[1], y_coord)
-                            if counter >= 5: break
+                            if counter >= 10: break
 
             
             except WindowsError:
@@ -152,7 +152,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[2], y_coord)
-                            if counter >= 5: break
+                            if counter >= 10: break
             
             except WindowsError:
                 continue
@@ -183,10 +183,10 @@ class Main:
                         print("Right arrow held")
                         counter = 0
                         while x[0] > 245:
-                            sleep(0.5)
+                            sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[3], y_coord)
-                            if counter >= 5: break
+                            if counter >= 10: break
 
             
             except WindowsError:
