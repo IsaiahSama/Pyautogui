@@ -149,8 +149,9 @@ class Main:
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.08)
+        sleep(0.07)
         keyboard.release(key)
+        sleep(0.03)
 
 
 main = Main()
