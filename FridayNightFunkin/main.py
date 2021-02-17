@@ -84,7 +84,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[0], y_coord)
-                            if counter >= 10: break
+                            if counter >= 5: break
 
                     keyboard.release("w")
 
@@ -124,7 +124,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[1], y_coord)
-                            if counter >= 10: break
+                            if counter >= 5: break
 
                     keyboard.release("a")
 
@@ -162,7 +162,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[2], y_coord)
-                            if counter >= 10: break
+                            if counter >= 5: break
 
                     keyboard.release("s")
 
@@ -200,7 +200,7 @@ class Main:
                             sleep(0.05)
                             counter += 1
                             x = pyautogui.pixel(x_coords[3], y_coord)
-                            if counter >= 10: break
+                            if counter >= 5: break
 
                     keyboard.release("d")
                     sleep(0.03)
