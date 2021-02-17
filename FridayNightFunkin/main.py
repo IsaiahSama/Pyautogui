@@ -63,7 +63,7 @@ class Main:
 
         print("Handling up arrow has begun.")
         
-        thread = Thread(target=self.press, args=("w", x_coords[0]))
+        thread = Thread(target=self.press, args=("w",))
 
         while not keyboard.is_pressed("q"):
             try:
@@ -86,7 +86,7 @@ class Main:
 
         print("Handling left arrow has begun")
 
-        thread = Thread(target=self.press, args=("a", x_coords[1]))
+        thread = Thread(target=self.press, args=("a",))
 
         while not keyboard.is_pressed("q"):
             
@@ -108,7 +108,7 @@ class Main:
 
         print("Handling down arrow has begun")
 
-        thread = Thread(target=self.press, args=("s", x_coords[2]))
+        thread = Thread(target=self.press, args=("s",))
 
         while not keyboard.is_pressed("q"):
 
@@ -130,7 +130,7 @@ class Main:
 
         print("Handling right arrow has begun")
 
-        thread = Thread(target=self.press, args=("d", x_coords[3]))
+        thread = Thread(target=self.press, args=("d",))
 
         while not keyboard.is_pressed("q"):
 
@@ -139,7 +139,7 @@ class Main:
             
                 if x[0] > 245:
                     
-                    self.press("d", x_coords[3])
+                    thread.start()
                     print("Right arrow pressed")
             
             except WindowsError:
