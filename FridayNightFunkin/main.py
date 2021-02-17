@@ -66,7 +66,7 @@ class Main:
                 x = pyautogui.pixel(x_coords[0], y_coord)
 
                 if x[1] > 245:
-                    self.press("w")
+                    self.press("w", x_coords[0])
                     print("Up arrow pressed")
             
             except WindowsError:
@@ -88,7 +88,7 @@ class Main:
                 x = pyautogui.pixel(x_coords[1], y_coord)
 
                 if x[0] > 160 and x[2] > 150:
-                    self.press("a")
+                    self.press("a", x_coords[1])
                     print("Left arrow pressed")
             
             except WindowsError:
@@ -108,7 +108,7 @@ class Main:
                 x = pyautogui.pixel(x_coords[2], y_coord)
                 
                 if x[1] > 200 and x[2] > 200:
-                    self.press("s")
+                    self.press("s", x_coords[2])
                     print("Down arrow pressed")
             
             except WindowsError:
@@ -129,7 +129,7 @@ class Main:
             
                 if x[0] > 245:
                     
-                    self.press("d")
+                    self.press("d", x_coords[3])
                     print("Right arrow pressed")
             
             except WindowsError:
@@ -137,10 +137,19 @@ class Main:
 
         print("Function has been terminated")
 
-    def press(self, key):
+    def press(self, key, x_coord):
         
         keyboard.press(key)
         sleep(0.02)
+        try:
+            x = pyautogui.pixel(x_coord, y_coord)
+            
+            while x != color:
+                sleep(0.01)
+                x = pyautogui.pixel(x_coord, y_coord)
+        
+        except WindowsError:
+            pass
         keyboard.release(key)
         sleep(0.05)
 
