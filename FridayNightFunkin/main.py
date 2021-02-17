@@ -56,6 +56,7 @@ class Main:
         for thread in thread_list:
             thread.start()
 
+        thread = Thread(target=self.reset_con, daemon=True)
         input()
 
 
@@ -79,7 +80,7 @@ class Main:
                         keyboard.press("w")
                         print("Up arrow held")
                         while x[1] > 245:
-                            sleep(0.01)
+                            sleep(0.05)
                             x = pyautogui.pixel(x_coords[0], y_coord)
 
                         keyboard.release("w")
@@ -113,7 +114,7 @@ class Main:
                         keyboard.press("a")
                         print("left arrow held")
                         while x[0] > 160 and x[2] > 150:
-                            sleep(0.01)
+                            sleep(0.05)
                             x = pyautogui.pixel(x_coords[1], y_coord)
 
                         keyboard.release("a")                   
@@ -145,7 +146,7 @@ class Main:
                         keyboard.press("s")
                         print("Right arrow held")
                         while x[1] > 200 and x[2] > 200:
-                            sleep(0.01)
+                            sleep(0.05)
                             x = pyautogui.pixel(x_coords[2], y_coord)
 
                         keyboard.release("s")
@@ -178,11 +179,8 @@ class Main:
                         keyboard.press("d")
                         print("Right arrow held")
                         while x[0] > 245:
-                            sleep(0.01)
+                            sleep(0.05)
                             x = pyautogui.pixel(x_coords[3], y_coord)
-
-                        keyboard.release("d")
-
             
             except WindowsError:
                 continue
@@ -195,6 +193,13 @@ class Main:
         sleep(0.1)
         keyboard.release(key)
         sleep(0.03)
+
+
+    def reset_con(self):
+        while not keyboard.is_pressed("q"):
+            sleep(2)
+            for letter in letters:
+                keyboard.release(letter)
 
 
 
