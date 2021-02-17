@@ -8,7 +8,7 @@ from win10toast import ToastNotifier
 x_coords = [1285, 1011, 1143, 1423]
 letters = ["w", "a", "s", "d"]
 
-y_coord = 305
+y_coord = 306
 
 color = (135, 163, 173)
 
@@ -140,7 +140,7 @@ class Main:
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.01)
+        sleep(0.02)
         keyboard.release(key)
         sleep(0.05)
 
