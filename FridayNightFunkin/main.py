@@ -59,8 +59,13 @@ class Main:
         print("Handling up arrow has begun.")
         
         while not keyboard.is_pressed("q"):
+            try:
+                x = pyautogui.pixel(x_coords[0], y_coord)
             
-            while pyautogui.pixel(x_coords[0], y_coord)[1] > 245:
+            except WindowsError:
+                x = pyautogui.pixel(x_coords[0], y_coord)
+                
+            if x[1] > 245:
                 self.press("w")
                 print("Up arrow pressed")
 
@@ -73,9 +78,14 @@ class Main:
         print("Handling left arrow has begun")
 
         while not keyboard.is_pressed("q"):
-            x = pyautogui.pixel(x_coords[1], y_coord)
+            
+            try:
+                x = pyautogui.pixel(x_coords[1], y_coord)
+            
+            except WindowsError:
+                x = pyautogui.pixel(x_coords[1], y_coord)
 
-            while x[0] > 160 and x[2] > 150:
+            if x[0] > 160 and x[2] > 150:
                 self.press("a")
                 print("Left arrow pressed")
 
@@ -88,10 +98,14 @@ class Main:
         print("Handling down arrow has begun")
 
         while not keyboard.is_pressed("q"):
-            
-            x = pyautogui.pixel(x_coords[2], y_coord)
 
-            while x[1] > 200 and x[2] > 200:
+            try:
+                x = pyautogui.pixel(x_coords[2], y_coord)
+            
+            except WindowsError:
+                x = pyautogui.pixel(x_coords[2], y_coord)
+
+            if x[1] > 200 and x[2] > 200:
                 self.press("s")
                 print("Down arrow pressed")
 
@@ -104,8 +118,14 @@ class Main:
         print("Handling right arrow has begun")
 
         while not keyboard.is_pressed("q"):
+
+            try:
+                x = pyautogui.pixel(x_coords[3], y_coord)
             
-            while pyautogui.pixel(x_coords[3], y_coord)[0] > 245:
+            except WindowsError:
+                x = pyautogui.pixel(x_coords[3], y_coord)
+            
+            if x[0] > 245:
                 
                 self.press("d")
                 print("Right arrow pressed")
@@ -117,6 +137,7 @@ class Main:
         keyboard.press(key)
         sleep(0.02)
         keyboard.release(key)
+        sleep(0.3)
 
 
 main = Main()
