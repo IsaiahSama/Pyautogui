@@ -74,7 +74,7 @@ class Main:
                     keyboard.press("w")
                     print("Up arrow pressed")
 
-                    sleep(0.05)
+                    sleep(0.08)
 
                     x = pyautogui.pixel(x_coords[0], y_coord)
                     if x[1] > 245:
@@ -114,7 +114,7 @@ class Main:
                     keyboard.press("a")
                     print("Left arrow pressed")
 
-                    sleep(0.05)
+                    sleep(0.08)
 
                     x = pyautogui.pixel(x_coords[1], y_coord)
                     if x[0] > 160 and x[2] > 150:
@@ -152,7 +152,7 @@ class Main:
 
                     print("Down arrow pressed")
 
-                    sleep(0.05)
+                    sleep(0.08)
 
                     x = pyautogui.pixel(x_coords[2], y_coord)
                     if x[1] > 200 and x[2] > 200:
@@ -190,7 +190,7 @@ class Main:
                     
                     keyboard.press("d")
                     print("Right arrow pressed")
-                    sleep(0.05)
+                    sleep(0.08)
 
                     x = pyautogui.pixel(x_coords[3], y_coord)
                     if x[0] > 245:
@@ -214,7 +214,7 @@ class Main:
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.05)
+        sleep(0.08)
         keyboard.release(key)
         sleep(0.03)
 
