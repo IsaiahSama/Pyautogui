@@ -74,6 +74,8 @@ class Main:
                     keyboard.press("w")
                     print("Up arrow pressed")
 
+                    sleep(0.1)
+
                     x = pyautogui.pixel(x_coords[0], y_coord)
                     if x[1] > 245:
                         print("Up arrow held")
@@ -85,6 +87,8 @@ class Main:
                             if counter >= 10: break
 
                     keyboard.release("w")
+
+                    sleep(0.03)
             
             except WindowsError:
                 continue                
@@ -110,6 +114,8 @@ class Main:
                     keyboard.press("a")
                     print("Left arrow pressed")
 
+                    sleep(0.1)
+
                     x = pyautogui.pixel(x_coords[1], y_coord)
                     if x[0] > 160 and x[2] > 150:
                         print("left arrow held")
@@ -121,6 +127,8 @@ class Main:
                             if counter >= 10: break
 
                     keyboard.release("a")
+
+                    sleep(0.03)
             
             except WindowsError:
                 continue
@@ -144,6 +152,8 @@ class Main:
 
                     print("Down arrow pressed")
 
+                    sleep(0.1)
+
                     x = pyautogui.pixel(x_coords[2], y_coord)
                     if x[1] > 200 and x[2] > 200:
                         print("Right arrow held")
@@ -155,6 +165,8 @@ class Main:
                             if counter >= 10: break
 
                     keyboard.release("s")
+
+                    sleep(0.03)
             
             except WindowsError:
                 continue
@@ -178,6 +190,7 @@ class Main:
                     
                     keyboard.press("d")
                     print("Right arrow pressed")
+                    sleep(0.1)
 
                     x = pyautogui.pixel(x_coords[3], y_coord)
                     if x[0] > 245:
@@ -190,6 +203,7 @@ class Main:
                             if counter >= 10: break
 
                     keyboard.release("d")
+                    sleep(0.03)
 
             
             except WindowsError:
