@@ -2,6 +2,7 @@ import pyautogui
 import keyboard
 from time import sleep
 from threading import Thread
+from win10toast import ToastNotifier
 
 # WASD!!!
 x_coords = [1285, 1011, 1143, 1423]
@@ -47,6 +48,8 @@ class Main:
     def main(self):
         thread_list = [Thread(target=self.handle_up, daemon=True), Thread(target=self.handle_left, daemon=True), Thread(target=self.handle_down, daemon=True), Thread(target=self.handle_right, daemon=True)]
 
+        ToastNotifier().show_toast(title="Firday Night Funkin Bot", msg="Bot has been Started")
+
         for thread in thread_list:
             thread.start()
 
@@ -71,6 +74,7 @@ class Main:
 
         print("Function has been terminated")
 
+        ToastNotifier().show_toast(title="Firday Night Funkin Bot", msg="Bot has been stopped")
 
     def handle_left(self):
         purple = (195, 75, 154)
