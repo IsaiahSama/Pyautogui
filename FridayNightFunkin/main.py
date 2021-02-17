@@ -48,7 +48,7 @@ class Main:
     def main(self):
         thread_list = [Thread(target=self.handle_up, daemon=True), Thread(target=self.handle_left, daemon=True), Thread(target=self.handle_down, daemon=True), Thread(target=self.handle_right, daemon=True)]
 
-        ToastNotifier().show_toast(title="Firday Night Funkin Bot", msg="Bot has been Started")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been Started")
 
         for thread in thread_list:
             thread.start()
@@ -64,17 +64,18 @@ class Main:
         while not keyboard.is_pressed("q"):
             try:
                 x = pyautogui.pixel(x_coords[0], y_coord)
+
+                if x[1] > 245:
+                    self.press("w")
+                    print("Up arrow pressed")
             
             except WindowsError:
-                x = pyautogui.pixel(x_coords[0], y_coord)
-                
-            if x[1] > 245:
-                self.press("w")
-                print("Up arrow pressed")
+                continue                
+            
 
         print("Function has been terminated")
 
-        ToastNotifier().show_toast(title="Firday Night Funkin Bot", msg="Bot has been stopped")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been stopped")
 
     def handle_left(self):
         purple = (195, 75, 154)
@@ -85,13 +86,13 @@ class Main:
             
             try:
                 x = pyautogui.pixel(x_coords[1], y_coord)
+
+                if x[0] > 160 and x[2] > 150:
+                    self.press("a")
+                    print("Left arrow pressed")
             
             except WindowsError:
-                x = pyautogui.pixel(x_coords[1], y_coord)
-
-            if x[0] > 160 and x[2] > 150:
-                self.press("a")
-                print("Left arrow pressed")
+                continue
 
         print("Function has been terminated")
 
@@ -105,13 +106,13 @@ class Main:
 
             try:
                 x = pyautogui.pixel(x_coords[2], y_coord)
+                
+                if x[1] > 200 and x[2] > 200:
+                    self.press("s")
+                    print("Down arrow pressed")
             
             except WindowsError:
-                x = pyautogui.pixel(x_coords[2], y_coord)
-
-            if x[1] > 200 and x[2] > 200:
-                self.press("s")
-                print("Down arrow pressed")
+                continue
 
         print("Function has been terminated")
 
@@ -126,22 +127,22 @@ class Main:
             try:
                 x = pyautogui.pixel(x_coords[3], y_coord)
             
-            except WindowsError:
-                x = pyautogui.pixel(x_coords[3], y_coord)
+                if x[0] > 245:
+                    
+                    self.press("d")
+                    print("Right arrow pressed")
             
-            if x[0] > 245:
-                
-                self.press("d")
-                print("Right arrow pressed")
+            except WindowsError:
+                continue
 
         print("Function has been terminated")
 
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.02)
+        sleep(0.01)
         keyboard.release(key)
-        sleep(0.3)
+        sleep(0.05)
 
 
 main = Main()
