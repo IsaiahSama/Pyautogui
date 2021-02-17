@@ -142,13 +142,13 @@ class Main:
     def press(self, key, x_coord):
         
         keyboard.press(key)
-        sleep(0.03)
+        sleep(0.05)
         try:
             x = pyautogui.pixel(x_coord, y_coord)
             
-            sleep(0.02)
+            sleep(0.05)
             if x != color:
-                sleep(0.8)
+                sleep(0.7)
         
         except WindowsError:
             pass
