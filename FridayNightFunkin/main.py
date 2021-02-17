@@ -1,5 +1,6 @@
 import pyautogui
 import keyboard
+import webbrowser
 from time import sleep
 from threading import Thread
 from win10toast import ToastNotifier
@@ -12,7 +13,7 @@ y_coord = 306
 
 color = (135, 163, 173)
 
-
+webbrowser.open("https://www.newgrounds.com/portal/view/770371")
 class Setup:
 
     def __init__(self) -> None:
