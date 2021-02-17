@@ -63,9 +63,8 @@ class Main:
 
         print("Handling up arrow has begun.")
         
-        thread = Thread(target=self.press, args=("w",))
-
         while not keyboard.is_pressed("q"):
+            thread = Thread(target=self.press, args=("w",))
             try:
                 x = pyautogui.pixel(x_coords[0], y_coord)
 
@@ -86,10 +85,10 @@ class Main:
 
         print("Handling left arrow has begun")
 
-        thread = Thread(target=self.press, args=("a",))
-
         while not keyboard.is_pressed("q"):
             
+            thread = Thread(target=self.press, args=("a",))
+
             try:
                 x = pyautogui.pixel(x_coords[1], y_coord)
 
@@ -108,9 +107,8 @@ class Main:
 
         print("Handling down arrow has begun")
 
-        thread = Thread(target=self.press, args=("s",))
-
         while not keyboard.is_pressed("q"):
+            thread = Thread(target=self.press, args=("s",))
 
             try:
                 x = pyautogui.pixel(x_coords[2], y_coord)
@@ -130,9 +128,9 @@ class Main:
 
         print("Handling right arrow has begun")
 
-        thread = Thread(target=self.press, args=("d",))
-
         while not keyboard.is_pressed("q"):
+            thread = Thread(target=self.press, args=("d",))
+
 
             try:
                 x = pyautogui.pixel(x_coords[3], y_coord)
