@@ -8,7 +8,7 @@ from win10toast import ToastNotifier
 x_coords = [1285, 1011, 1143, 1423]
 letters = ["w", "a", "s", "d"]
 
-y_coord = 300
+y_coord = 305
 
 color = (135, 163, 173)
 
