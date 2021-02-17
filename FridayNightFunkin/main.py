@@ -63,12 +63,14 @@ class Main:
 
         print("Handling up arrow has begun.")
         
+        thread = Thread(target=self.press, args=("w", x_coords[0]))
+
         while not keyboard.is_pressed("q"):
             try:
                 x = pyautogui.pixel(x_coords[0], y_coord)
 
                 if x[1] > 245:
-                    self.press("w", x_coords[0])
+                    thread.start()
                     print("Up arrow pressed")
             
             except WindowsError:
@@ -84,13 +86,15 @@ class Main:
 
         print("Handling left arrow has begun")
 
+        thread = Thread(target=self.press, args=("a", x_coords[1]))
+
         while not keyboard.is_pressed("q"):
             
             try:
                 x = pyautogui.pixel(x_coords[1], y_coord)
 
                 if x[0] > 160 and x[2] > 150:
-                    self.press("a", x_coords[1])
+                    thread.start()
                     print("Left arrow pressed")
             
             except WindowsError:
@@ -104,13 +108,15 @@ class Main:
 
         print("Handling down arrow has begun")
 
+        thread = Thread(target=self.press, args=("s", x_coords[2]))
+
         while not keyboard.is_pressed("q"):
 
             try:
                 x = pyautogui.pixel(x_coords[2], y_coord)
                 
                 if x[1] > 200 and x[2] > 200:
-                    self.press("s", x_coords[2])
+                    thread.start()
                     print("Down arrow pressed")
             
             except WindowsError:
@@ -123,6 +129,8 @@ class Main:
         red = (249, 57, 63)
 
         print("Handling right arrow has begun")
+
+        thread = Thread(target=self.press, args=("d", x_coords[3]))
 
         while not keyboard.is_pressed("q"):
 
@@ -139,19 +147,10 @@ class Main:
 
         print("Function has been terminated")
 
-    def press(self, key, x_coord):
+    def press(self, key):
         
         keyboard.press(key)
-        sleep(0.05)
-        try:
-            x = pyautogui.pixel(x_coord, y_coord)
-            
-            sleep(0.05)
-            if x != color:
-                sleep(0.7)
-        
-        except WindowsError:
-            pass
+        sleep(0.02)
         keyboard.release(key)
 
 
