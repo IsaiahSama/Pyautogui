@@ -73,6 +73,16 @@ class Main:
                     # thread.start()
                     self.press("w")
                     print("Up arrow pressed")
+
+                    x = pyautogui.pixel(x_coords[0], y_coord)
+                    if x[1] > 245:
+                        keyboard.press("w")
+                        print("Up arrow held")
+                        while x[1] > 245:
+                            sleep(0.01)
+                            x = pyautogui.pixel(x_coords[0], y_coord)
+
+                        keyboard.release("w")
             
             except WindowsError:
                 continue                
@@ -97,6 +107,16 @@ class Main:
                 if x[0] > 160 and x[2] > 150:
                     self.press("a")
                     print("Left arrow pressed")
+
+                    x = pyautogui.pixel(x_coords[1], y_coord)
+                    if x[0] > 160 and x[2] > 150:
+                        keyboard.press("a")
+                        print("left arrow held")
+                        while x[0] > 160 and x[2] > 150:
+                            sleep(0.01)
+                            x = pyautogui.pixel(x_coords[1], y_coord)
+
+                        keyboard.release("a")                   
             
             except WindowsError:
                 continue
@@ -119,6 +139,16 @@ class Main:
                     self.press("s")
 
                     print("Down arrow pressed")
+
+                    x = pyautogui.pixel(x_coords[2], y_coord)
+                    if x[1] > 200 and x[2] > 200:
+                        keyboard.press("s")
+                        print("Right arrow held")
+                        while x[1] > 200 and x[2] > 200:
+                            sleep(0.01)
+                            x = pyautogui.pixel(x_coords[2], y_coord)
+
+                        keyboard.release("s")
             
             except WindowsError:
                 continue
@@ -142,6 +172,17 @@ class Main:
                     
                     self.press("d")
                     print("Right arrow pressed")
+
+                    x = pyautogui.pixel(x_coords[3], y_coord)
+                    if x[0] > 245:
+                        keyboard.press("d")
+                        print("Right arrow held")
+                        while x[0] > 245:
+                            sleep(0.01)
+                            x = pyautogui.pixel(x_coords[3], y_coord)
+
+                        keyboard.release("d")
+
             
             except WindowsError:
                 continue
