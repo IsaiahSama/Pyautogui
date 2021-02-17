@@ -39,16 +39,18 @@ class Main:
 
     def __init__(self) -> None:
         setup = Setup()
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started", duration=2)
         setup.get_arrow("down", 1143)
         setup.get_arrow("left", 1011)
         setup.get_arrow("right", 1423)
         setup.get_arrow("up", 1285)
         print("Done and ready to play")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Done and ready to play", duration=2)
+
 
     def main(self):
         thread_list = [Thread(target=self.handle_up, daemon=True), Thread(target=self.handle_left, daemon=True), Thread(target=self.handle_down, daemon=True), Thread(target=self.handle_right, daemon=True)]
 
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been Started")
 
         for thread in thread_list:
             thread.start()
@@ -144,8 +146,9 @@ class Main:
         try:
             x = pyautogui.pixel(x_coord, y_coord)
             
+            sleep(0.02)
             if x != color:
-                sleep(1)
+                sleep(0.8)
         
         except WindowsError:
             pass
