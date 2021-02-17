@@ -50,6 +50,8 @@ class Main:
         for thread in thread_list:
             thread.start()
 
+        input()
+
 
     def handle_up(self):
         green = (18, 249, 7)
