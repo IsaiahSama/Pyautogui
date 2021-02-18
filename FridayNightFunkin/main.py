@@ -112,7 +112,6 @@ class Main:
                     continue
 
             if keyboard.is_pressed("p"):
-                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
                 sleep(2)
                 while not keyboard.is_pressed("p"): sleep(0.1)
 
@@ -141,7 +140,6 @@ class Main:
                     continue
 
             if keyboard.is_pressed("p"):
-                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
                 sleep(2)
                 while not keyboard.is_pressed("p"): sleep(0.1)
 
@@ -169,7 +167,6 @@ class Main:
                     continue
 
             if keyboard.is_pressed("p"):
-                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
                 sleep(2)
                 while not keyboard.is_pressed("p"): sleep(0.1)
 
