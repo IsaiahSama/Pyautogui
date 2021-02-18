@@ -40,13 +40,13 @@ class Main:
 
     def __init__(self) -> None:
         setup = Setup()
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started. Searching for arrows")
         setup.get_arrow("down", 1143)
         setup.get_arrow("left", 1011)
         setup.get_arrow("right", 1423)
         setup.get_arrow("up", 1285)
         print("Done and ready to play")
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Done and ready to play")
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Arrows found and ready to play")
 
 
     def main(self):
