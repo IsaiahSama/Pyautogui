@@ -6,7 +6,7 @@ from threading import Thread
 from win10toast import ToastNotifier
 
 # WASD!!!
-x_coords = [1280, 1013, 1149, 1419]
+x_coords = [1279, 1010, 1149, 1409]
 letters = ["w", "a", "s", "d"]
 
 y_coord = 300
