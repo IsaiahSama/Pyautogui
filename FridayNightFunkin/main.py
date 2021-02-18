@@ -9,7 +9,7 @@ from win10toast import ToastNotifier
 x_coords = [1280, 1013, 1149, 1419]
 letters = ["w", "a", "s", "d"]
 
-y_coord = 302
+y_coord = 300
 
 color = (135, 163, 173)
 
@@ -67,16 +67,16 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("w",))
             
-            for y in [266, 290]:
+            for y in range(x_coords[0]-2, x_coords[0]+2):
                 try:
-                    x = pyautogui.pixel(x_coords[0], y)
+                    x = pyautogui.pixel(y, y_coord)
 
                     if x[1] > 245-20:
                         # thread.start()
                         self.press("w")
                         print("Up arrow pressed")
                 
-                    sleep(0.04)
+                        sleep(0.1)
                 except WindowsError:
                     continue                
 
@@ -99,21 +99,23 @@ class Main:
             
             # thread = Thread(target=self.press, args=("a",))
 
-            for y in [266, 290]:
+            for y in range(x_coords[1]-2, x_coords[1]+2):
                 try:
-                    x = pyautogui.pixel(x_coords[1], y)
+                    x = pyautogui.pixel(y, y_coord)
 
                     if x[0] > 160-20 and x[2] > 150-20:
                         self.press("a")
                         print("Left arrow pressed")
                         
-                        sleep(0.04)
+                        sleep(0.1)
                 except WindowsError:
                     continue
 
             if keyboard.is_pressed("p"):
                 sleep(2)
+                print("left waiting to be unpaused")
                 while not keyboard.is_pressed("p"): sleep(0.1)
+                print("left has been unpaused")
 
         print("Function has been terminated")
 
@@ -125,22 +127,24 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("s",))
 
-            for y in [266, 290]:
+            for y in range(x_coords[2]-2, x_coords[2]+2):
                 try:
-                    x = pyautogui.pixel(x_coords[2], y)
+                    x = pyautogui.pixel(y, y_coord)
                     
                     if x[1] > 200-20 and x[2] > 200-20:
                         self.press("s")
 
                         print("Down arrow pressed")
                 
-                        sleep(0.04)
+                        sleep(0.1)
                 except WindowsError:
                     continue
 
             if keyboard.is_pressed("p"):
                 sleep(2)
+                print("down waiting to be unpaused")
                 while not keyboard.is_pressed("p"): sleep(0.1)
+                print("down has been unpaused")
 
         print("Function has been terminated")
 
@@ -153,28 +157,30 @@ class Main:
         while not keyboard.is_pressed("q"):
             #thread = Thread(target=self.press, args=("d",))
 
-            for y in [266, 290]:
+            for y in range(x_coords[3]-2, x_coords[3]+2):
                 try:
-                    x = pyautogui.pixel(x_coords[3], y)
+                    x = pyautogui.pixel(y, y_coord)
                 
                     if x[0] > 245-20:
                         
                         self.press("d")
                         print("Right arrow pressed")
-                        sleep(0.04)
+                        sleep(0.1)
                 except WindowsError:
                     continue
 
             if keyboard.is_pressed("p"):
                 sleep(2)
+                print("left waiting to be unpaused")
                 while not keyboard.is_pressed("p"): sleep(0.1)
+                print("left has been unpaused")
 
         print("Function has been terminated")
 
     def press(self, key):
         
         keyboard.press(key)
-        sleep(0.08)
+        sleep(0.05)
         keyboard.release(key)
 
 
