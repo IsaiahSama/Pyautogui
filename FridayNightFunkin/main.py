@@ -67,11 +67,11 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("w",))
             
-            for y in range(x_coords[0]-2, x_coords[0]+3):
+            for y in [266, 290, 315]:
                 try:
-                    x = pyautogui.pixel(y, y_coord)
+                    x = pyautogui.pixel(x_coords[0], y)
 
-                    if x[1] > 245-5:
+                    if x[1] > 245-20:
                         # thread.start()
                         self.press("w")
                         print("Up arrow pressed")
@@ -99,11 +99,11 @@ class Main:
             
             # thread = Thread(target=self.press, args=("a",))
 
-            for y in range(x_coords[1]-2, x_coords[1]+3):
+            for y in [266, 290, 315]:
                 try:
-                    x = pyautogui.pixel(y, y_coord)
+                    x = pyautogui.pixel(x_coords[1], y)
 
-                    if x[0] > 160-5 and x[2] > 150-5:
+                    if x[0] > 160-20 and x[2] > 150-20:
                         self.press("a")
                         print("Left arrow pressed")
                         
@@ -120,17 +120,16 @@ class Main:
 
     def handle_down(self):
         blue = (0, 204, 205)
-
         print("Handling down arrow has begun")
 
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("s",))
 
-            for y in range(x_coords[2]-2, x_coords[2]+3):
+            for y in [266, 290, 315]:
                 try:
-                    x = pyautogui.pixel(y, y_coord)
+                    x = pyautogui.pixel(x_coords[2], y)
                     
-                    if x[1] > 200-5 and x[2] > 200-5:
+                    if x[1] > 200-20 and x[2] > 200-20:
                         self.press("s")
 
                         print("Down arrow pressed")
@@ -154,11 +153,11 @@ class Main:
         while not keyboard.is_pressed("q"):
             #thread = Thread(target=self.press, args=("d",))
 
-            for y in range(x_coords[3]-2, x_coords[3]+3):
+            for y in [266, 290, 315]:
                 try:
-                    x = pyautogui.pixel(y, y_coord)
+                    x = pyautogui.pixel(x_coords[3], y)
                 
-                    if x[0] > 245-5:
+                    if x[0] > 245-20:
                         
                         self.press("d")
                         print("Right arrow pressed")
