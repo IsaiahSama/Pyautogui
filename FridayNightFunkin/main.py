@@ -67,7 +67,7 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("w",))
             
-            for y in [266, 290, 315]:
+            for y in [266, 290]:
                 try:
                     x = pyautogui.pixel(x_coords[0], y)
 
@@ -99,7 +99,7 @@ class Main:
             
             # thread = Thread(target=self.press, args=("a",))
 
-            for y in [266, 290, 315]:
+            for y in [266, 290]:
                 try:
                     x = pyautogui.pixel(x_coords[1], y)
 
@@ -125,7 +125,7 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("s",))
 
-            for y in [266, 290, 315]:
+            for y in [266, 290]:
                 try:
                     x = pyautogui.pixel(x_coords[2], y)
                     
@@ -153,7 +153,7 @@ class Main:
         while not keyboard.is_pressed("q"):
             #thread = Thread(target=self.press, args=("d",))
 
-            for y in [266, 290, 315]:
+            for y in [266, 290]:
                 try:
                     x = pyautogui.pixel(x_coords[3], y)
                 
