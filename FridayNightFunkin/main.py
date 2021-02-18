@@ -67,26 +67,24 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("w",))
             
-            for y in range(x_coords[0]-3, x_coords[0]+3):
+            for y in range(x_coords[0]-2, x_coords[0]+3):
                 try:
-                        x = pyautogui.pixel(y, y_coord)
+                    x = pyautogui.pixel(y, y_coord)
 
-                        if x[1] > 245:
-                            # thread.start()
-                            self.press("w")
-                            print("Up arrow pressed")
-
-                            # x = pyautogui.pixel(x_coords[0], y_coord)
-                            # if x[1] > 245:
-                            #     keyboard.press("w")
-                            #     print("Up arrow held")
-
-                            #     sleep(0.5)
-                            #     keyboard.release("w")
-                    
+                    if x[1] > 245-5:
+                        # thread.start()
+                        self.press("w")
+                        print("Up arrow pressed")
+                
+                    sleep(0.04)
                 except WindowsError:
                     continue                
-            
+
+            if keyboard.is_pressed("p"):
+                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
+                sleep(2)
+                while not keyboard.is_pressed("p"): sleep(0.1)
+                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been resumed")
 
         print("Function has been terminated")
 
@@ -101,16 +99,22 @@ class Main:
             
             # thread = Thread(target=self.press, args=("a",))
 
-            for y in range(x_coords[1]-3, x_coords[1]+3):
+            for y in range(x_coords[1]-2, x_coords[1]+3):
                 try:
                     x = pyautogui.pixel(y, y_coord)
 
-                    if x[0] > 160 and x[2] > 150:
+                    if x[0] > 160-5 and x[2] > 150-5:
                         self.press("a")
                         print("Left arrow pressed")
                         
+                        sleep(0.04)
                 except WindowsError:
                     continue
+
+            if keyboard.is_pressed("p"):
+                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
+                sleep(2)
+                while not keyboard.is_pressed("p"): sleep(0.1)
 
         print("Function has been terminated")
 
@@ -123,17 +127,23 @@ class Main:
         while not keyboard.is_pressed("q"):
             # thread = Thread(target=self.press, args=("s",))
 
-            for y in range(x_coords[2]-3, x_coords[2]+3):
+            for y in range(x_coords[2]-2, x_coords[2]+3):
                 try:
                     x = pyautogui.pixel(y, y_coord)
                     
-                    if x[1] > 200 and x[2] > 200:
+                    if x[1] > 200-5 and x[2] > 200-5:
                         self.press("s")
 
                         print("Down arrow pressed")
                 
+                        sleep(0.04)
                 except WindowsError:
                     continue
+
+            if keyboard.is_pressed("p"):
+                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
+                sleep(2)
+                while not keyboard.is_pressed("p"): sleep(0.1)
 
         print("Function has been terminated")
 
@@ -146,17 +156,22 @@ class Main:
         while not keyboard.is_pressed("q"):
             #thread = Thread(target=self.press, args=("d",))
 
-            for y in range(x_coords[3]-3, x_coords[3]+3):
+            for y in range(x_coords[3]-2, x_coords[3]+3):
                 try:
                     x = pyautogui.pixel(y, y_coord)
                 
-                    if x[0] > 245:
+                    if x[0] > 245-5:
                         
                         self.press("d")
                         print("Right arrow pressed")
-                
+                        sleep(0.04)
                 except WindowsError:
                     continue
+
+            if keyboard.is_pressed("p"):
+                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
+                sleep(2)
+                while not keyboard.is_pressed("p"): sleep(0.1)
 
         print("Function has been terminated")
 
