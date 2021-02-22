@@ -1,52 +1,43 @@
 import pyautogui
 import keyboard
-import webbrowser
 from time import sleep
 from threading import Thread
 from win10toast import ToastNotifier
 
 # WASD!!!
-x_coords = [1279, 1010, 1149, 1409]
+x_coords = [1392, 1056, 1228, 1565]
 letters = ["w", "a", "s", "d"]
 
-y_coord = 300
+y_coord = 165
 
-color = (135, 163, 173)
-
-webbrowser.open("https://www.newgrounds.com/portal/view/770371")
 class Setup:
 
     def __init__(self) -> None:
         pass
 
-    def get_arrow(self, looking_for, to_find):
-
-        print(f"Checking for color of {looking_for}")
-
+    def setup(self):
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Press the 'p' key when the mouse is near the middle of the left arrow.")
+        while not keyboard.is_pressed("p"): sleep(0.05)
         while True:
             try:
-                while pyautogui.pixel(to_find, y_coord) != color:
-                    pass
-
-                break
-
+                color = pyautogui.pixel(1056, 165)
+                return color
             except WindowsError:
-                continue  
-
-        print(f"{looking_for} is correct.")
+                continue
         
-
 class Main:
 
     def __init__(self) -> None:
+        self.color = None
+
+
+    def pre_main(self):
         setup = Setup()
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started. Searching for arrows")
-        setup.get_arrow("down", 1143)
-        setup.get_arrow("left", 1011)
-        setup.get_arrow("right", 1423)
-        setup.get_arrow("up", 1285)
-        print("Done and ready to play")
-        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Arrows found and ready to play")
+        pyautogui.moveTo(1056, 165)
+        self.color = setup.setup()
+        ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Done. Press 'F' to start me and 'q' to stop me :)")
+        while not keyboard.is_pressed('f'): sleep(0.02)
+        self.main()
 
 
     def main(self):
@@ -56,8 +47,7 @@ class Main:
         for thread in thread_list:
             thread.start()
 
-        input()
-
+        while not keyboard.is_pressed("q"):sleep(0.1)
 
     def handle_up(self):
         green = (18, 249, 7)
@@ -79,12 +69,6 @@ class Main:
                         sleep(0.1)
                 except WindowsError:
                     continue                
-
-            if keyboard.is_pressed("p"):
-                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been paused")
-                sleep(2)
-                while not keyboard.is_pressed("p"): sleep(0.1)
-                ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has been resumed")
 
         print("Function has been terminated")
 
@@ -111,12 +95,6 @@ class Main:
                 except WindowsError:
                     continue
 
-            if keyboard.is_pressed("p"):
-                sleep(2)
-                print("left waiting to be unpaused")
-                while not keyboard.is_pressed("p"): sleep(0.1)
-                print("left has been unpaused")
-
         print("Function has been terminated")
 
 
@@ -139,12 +117,6 @@ class Main:
                         sleep(0.1)
                 except WindowsError:
                     continue
-
-            if keyboard.is_pressed("p"):
-                sleep(2)
-                print("down waiting to be unpaused")
-                while not keyboard.is_pressed("p"): sleep(0.1)
-                print("down has been unpaused")
 
         print("Function has been terminated")
 
@@ -169,12 +141,6 @@ class Main:
                 except WindowsError:
                     continue
 
-            if keyboard.is_pressed("p"):
-                sleep(2)
-                print("left waiting to be unpaused")
-                while not keyboard.is_pressed("p"): sleep(0.1)
-                print("left has been unpaused")
-
         print("Function has been terminated")
 
     def press(self, key):
@@ -186,5 +152,6 @@ class Main:
 
 
 main = Main()
+ToastNotifier().show_toast(title="Friday Night Funkin Bot", msg="Bot has Started. DO NOT MOVE YOUR CURSOR")
 
-main.main()
+while True: main.pre_main()
